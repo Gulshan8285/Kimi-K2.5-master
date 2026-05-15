@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kimi K2.5</title>
+    <meta
+      name="description"
+      content="Kimi K2.5 model summary, technical report, and deployment guidance."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #15181f;
+        --muted: #5f6775;
+        --line: #dfe3ea;
+        --accent: #1677ff;
+        --accent-dark: #0b53b5;
+        --surface: #f7f9fc;
+        --panel: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--surface);
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      .hero {
+        display: grid;
+        place-items: center;
+        min-height: 62vh;
+        padding: 56px 20px 40px;
+        background:
+          linear-gradient(135deg, rgba(22, 119, 255, 0.14), transparent 36%),
+          linear-gradient(315deg, rgba(20, 184, 166, 0.12), transparent 34%),
+          #ffffff;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-inner {
+        width: min(960px, 100%);
+      }
+
+      .logo {
+        width: min(220px, 58vw);
+        height: auto;
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 760px;
+        font-size: clamp(44px, 8vw, 84px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin: 24px 0 0;
+        font-size: clamp(18px, 2.6vw, 24px);
+        line-height: 1.45;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        background: var(--panel);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .button.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .content {
+        width: min(960px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 44px 0 64px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        min-height: 170px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .card p {
+        color: var(--muted);
+      }
+
+      .note {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-left: 4px solid var(--accent);
+        background: #eef6ff;
+        color: var(--accent-dark);
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          min-height: auto;
+          padding-top: 44px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-label="Kimi K2.5 overview">
+        <div class="hero-inner">
+          <img class="logo" src="figures/kimi-logo.png" alt="Kimi K2.5" />
+          <h1>Kimi K2.5</h1>
+          <p class="lead">
+            Open-source native multimodal agentic model resources, technical
+            report, and deployment notes.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="tech_report.pdf">Open Report</a>
+            <a class="button" href="README.md">Read README</a>
+            <a class="button" href="docs/deploy_guidance.md">Deployment Guide</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content" aria-label="Project details">
+        <div class="grid">
+          <article class="card">
+            <h2>Architecture</h2>
+            <p>Mixture-of-Experts model with 1T total parameters and 32B activated parameters.</p>
+          </article>
+          <article class="card">
+            <h2>Context</h2>
+            <p>Designed for long-context multimodal reasoning with a 256K context length.</p>
+          </article>
+          <article class="card">
+            <h2>Deployment</h2>
+            <p>Includes examples for vLLM, SGLang, and KTransformers inference setups.</p>
+          </article>
+        </div>
+        <p class="note">
+          This Vercel deployment hosts the project documentation and report. Running the Kimi K2.5
+          model itself requires dedicated inference hardware and is not supported on Vercel static hosting.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
